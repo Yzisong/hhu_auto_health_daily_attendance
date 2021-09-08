@@ -1,0 +1,2 @@
+# hhu
+基于python用于河海大学研究生每日健康打卡的脚本，需要在config文件里面填写个人信息，需要chromedrive和seleium包的支持。
