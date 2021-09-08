@@ -122,26 +122,6 @@ def dk_operate():
             print('打卡完成')
             driver.quit()
             break
-        # if find('//*[@id="successSubmit"]/div[2]/h5'):
-        #     print('打卡成功！')
-        #     break
-        # else:
-        #     print('打卡失败！')
-        #     driver.quit()
-        #driver.find_element_by_id('panel panel-success')
-        #print('daka')
-        #driver.find_element('你已成功提交，谢谢参与！')
-        # try:
-        #     #driver.find_element_by_xpath("/html/body/div[1]/div[3]/h3")
-        #     driver.find_element_by_id('panel panel-success')
-        # except:
-        #     print('打卡失败!')
-        #     driver.quit()
-        #     continue
-        # else:
-        #     print('打卡成功!')
-        #     driver.quit()
-        #     break
 
 
 url = "http://ids.hhu.edu.cn/amserver/UI/Login?goto=http://form.hhu.edu.cn/pdc/form/list"
