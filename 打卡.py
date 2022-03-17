@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.support.select import Select
+from selenium.webdriver.common.by import By
 import time
 import json
 import msvcrt
@@ -67,23 +68,34 @@ def dk_operate():
 
         #点击次页面的研究生健康打卡按钮
         try:
+            # while 1:
             driver.find_element_by_xpath('/html/body/div[1]/div[4]/div/section/section/div/a').click()
+            time.sleep(2)
+                # if find('/html/body/div[1]/div[4]/div/section/section/div/a'):
+                #     time.sleep(3)
+                #     driver.find_element_by_xpath('/html/body/div[1]/div[4]/div/section/section/div/a').click()
+                #     break
+                # time.sleep(2)
+            # driver.find_element_by_xpath('/html/body/div[1]/div[4]/div/section/section/div/a').click()
+            # time.sleep(2)
+            # driver.find_element_by_xpath('/html/body/div[1]/div[4]/div/section/section/div/a').click()
         except:
             print('网页超时，重新加载')
             driver.quit()
             #driver.refresh()
             continue
-        else:
+        else:       
             print('开始打卡')
-        #等待3秒
+
+        #等待1秒
         time.sleep(1)
         try:
             #输入身份证号
-            driver.find_element_by_xpath('//*[@id="SFZJH_402404"]').clear()
-            driver.find_element_by_xpath('//*[@id="SFZJH_402404"]').send_keys(config["身份证号"])
-            #输入攻读学位名称
-            driver.find_element_by_xpath('//*[@id="GDXW_926421"]').clear()
-            driver.find_element_by_xpath('//*[@id="GDXW_926421"]').send_keys(config["攻读学位"])
+            # driver.find_element_by_xpath('//*[@id="SFZJH_402404"]').clear()
+            # driver.find_element_by_xpath('//*[@id="SFZJH_402404"]').send_keys(config["身份证号"])
+            # #输入攻读学位名称
+            # driver.find_element_by_xpath('//*[@id="GDXW_926421"]').clear()
+            # driver.find_element_by_xpath('//*[@id="GDXW_926421"]').send_keys(config["攻读学位"])
             #输入导师名字
             driver.find_element_by_xpath('//*[@id="DSNAME_606453"]').clear()
             driver.find_element_by_xpath('//*[@id="DSNAME_606453"]').send_keys(config["导师名字"])
@@ -104,12 +116,14 @@ def dk_operate():
             driver.find_element_by_xpath('//*[@id="d-RADIO_799044"]/div/label[1]/input').click()
             #是否在校内？-》在
             driver.find_element_by_xpath('//*[@id="d-RADIO_384811"]/div/label[1]/input').click()
+            #driver.find_element_by_xpath('//*[@id="d-RADIO_384811"]/div/label[2]/input').click()
             #本人症状？-》健康
             driver.find_element_by_xpath('//*[@id="d-RADIO_907280"]/div/label[1]/input').click()
             #同住人员？-》健康
             driver.find_element_by_xpath('//*[@id="d-RADIO_716001"]/div/label[1]/input').click()
             #有无接触？-》无
             driver.find_element_by_xpath('//*[@id="d-RADIO_248990"]/div/label[1]/input').click()
+            #print('最后一步')
             #提交
             time.sleep(1)
             driver.find_element_by_xpath('//*[@id="saveBtn"]').click()
@@ -122,6 +136,26 @@ def dk_operate():
             print('打卡完成')
             driver.quit()
             break
+        # if find('//*[@id="successSubmit"]/div[2]/h5'):
+        #     print('打卡成功！')
+        #     break
+        # else:
+        #     print('打卡失败！')
+        #     driver.quit()
+        #driver.find_element_by_id('panel panel-success')
+        #print('daka')
+        #driver.find_element('你已成功提交，谢谢参与！')
+        # try:
+        #     #driver.find_element_by_xpath("/html/body/div[1]/div[3]/h3")
+        #     driver.find_element_by_id('panel panel-success')
+        # except:
+        #     print('打卡失败!')
+        #     driver.quit()
+        #     continue
+        # else:
+        #     print('打卡成功!')
+        #     driver.quit()
+        #     break
 
 
 url = "http://ids.hhu.edu.cn/amserver/UI/Login?goto=http://form.hhu.edu.cn/pdc/form/list"
@@ -133,10 +167,9 @@ except:
     print("配置文件错误！请检查配置文件是否与py文件放置于同一目录下，或配置文件是否出错! \n 按任意键退出 ")
     msvcrt.getch()
     exit()
-print('=======================\n 准备开始打卡,3s后开始！\n=======================\n')
-time.sleep(3)
+print('=======================\n 准备开始打卡,2s后开始！\n=======================')
+
 dk_operate()
-print('打卡成功！3s后退出')
-time.sleep(3)
+#print('打卡成功！按任意键退出')
+#msvcrt.getch()
 exit()
-#print(config["密码"])
